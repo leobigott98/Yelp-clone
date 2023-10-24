@@ -1,7 +1,12 @@
 require("dotenv").config();
 const express = require("express");
+const morgan = require("morgan");
 
 const app = express();
+
+//middleware
+app.use(morgan('dev'));
+app.use(express.json());
 
 //Get all restaurants
 app.get("/api/v1/restaurants", (req, res)=>{
@@ -20,7 +25,7 @@ app.get("/api/v1/restaurants/:id", (req, res)=>{
 
 //Create a restaurant
 app.post("/api/v1/restaurants", (req, res)=>{
-    console.log(req);
+    console.log(req.body);
 });
 
 //Edit a restaurant
